@@ -4,12 +4,12 @@ on:
   push
 
 jobs:
-  build_and_publish:
+  build_and_push:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - name: Build and push the Image
         run: |
-          docker login --username codigo3000 --password ${{ secrets.GH_PAT }} ghcr.io
-          docker build . --tag ghcr.io/codigo3000/hello-world-ghcr:latest
-          docker push ghcr.io/codigo3000/hello-world-ghcr:latest
+          podman login --username codigo3000 --password ${{ secrets.GH_PAT }} ghcr.io
+          podman build . --tag ghcr.io/codigo3000/hello-world-ghcr:latest
+          podman push ghcr.io/codigo3000/hello-world-ghcr:latest
